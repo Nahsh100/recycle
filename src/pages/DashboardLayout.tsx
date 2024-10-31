@@ -11,6 +11,8 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { loggedInUserState, userState } from "../atom";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../firebase";
+import logo from "../assets/rlogo.jpeg"
+import logo2 from "../assets/rlogo2.jpeg"
 
 type DashboardLayoutProps = {
   Component: React.ComponentType;
@@ -75,10 +77,12 @@ function DashboardLayout({ Component }: DashboardLayoutProps) {
         <MenuIcon />
         <h1>Hi {user.email}</h1>
         </div>
+        <img src={logo} className='w-16 h-16 rounded-full ' alt="" />
+        {/* <img src={logo2} className='w-20 h-16 object-contain ' alt="" /> */}
         <button onClick={handleLogout} className="bg-slate-800 p-2 rounded-md">Logout </button>
       </div>
       <div className="flex ">
-        <aside className="flex-[0.25] bg-gray-100 h-screen">
+        <aside className="flex-[0.25] bg-gray-100 h-[100%sh]">
           <h2 className="bg-gray-600 text-center text-white text-sm p-4 capitalize">
            {loggedInUser.length > 0 && loggedInUser[0].Role}
           </h2>
@@ -94,7 +98,7 @@ function DashboardLayout({ Component }: DashboardLayoutProps) {
           <Link to='/counter-offers'>
             <SidebarItem title="Counter Offers" Icon={AttachMoneyIcon} />
           </Link>
-        
+           <img src={logo2} className="mt-44 h-24 mx-auto" alt="" />
         </aside>
 
         <div className="flex-[0.75]">

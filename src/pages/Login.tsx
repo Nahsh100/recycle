@@ -5,6 +5,8 @@ import { auth, db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
 import { useRecoilState } from 'recoil'
 import { userState } from '../atom'
+import image from "../assets/recycle.jpeg"
+import logo1 from '../assets/rlogo.jpeg'
 
 function Login() {
     const [email, setEmail] = useState('')
@@ -51,7 +53,27 @@ function Login() {
       };
 
   return (
-    <div className='w-[320px] mx-auto mt-[10%] items-center flex flex-col space-y-5'>
+    <div className='flex  jusify-center items-center' style={{
+      backgroundImage: `url(${image})`,
+      height: "100vh",
+      width: "100%",
+      objectFit: "contain",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",}}>
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Adjust the rgba values for desired color and opacity
+        zIndex: 1 // Ensure overlay is above the background but below content
+    }} />
+    <div style={{ zIndex: 2, position: 'relative' }} className='mx-auto flex flex-col items-center'>
+      <img src={logo1} alt="Logo" className='w-20 h-20 rounded-full mb-5'/>
+    <h1 className='text-3xl text-white mb-10'>E-WASTE MANAGEMENT SYSTEM</h1>
+
+    <div  className='w-[320px] bg-white p-5   items-center flex flex-col space-y-5 ' >
         <h1 className='w-full text-center text-2xl font-semibold'>Login</h1>
        {error && <h2 className='bg-red-300 text-center text-red-600 p-2'>{error}</h2>}
         <input
@@ -79,6 +101,10 @@ function Login() {
         </Link>
         </div>
     </div>
+    </div>
+
+    </div>
+    
   )
 }
 
